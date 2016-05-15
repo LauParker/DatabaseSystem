@@ -6,6 +6,8 @@ import gui.PanelSQL;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -44,6 +46,10 @@ public class DatabaseMain {
 		DatabaseMain.nbGardens = nbGardens;
 	}
 
+	/**
+	 * start main method on start up
+	 * @param args
+	 */
 	public static void main(String [] args) {
 		frame = new Frame();
 		container = frame.getContentPane();
@@ -53,11 +59,20 @@ public class DatabaseMain {
 		showGUI(access);
 	}
 
+	/**
+	 * return to start screen
+	 */
 	public static void logOff() {
 		access = 0;
 		showGUI(access);
 	}
 
+	/**
+	 * from logon screen check inputs against the employee's in the database
+	 * if successful then log them on with their access
+	 * @param user
+	 * @param pass
+	 */
 	public static void logOnAttempt(String user, String pass) {	
 		dbc.getHumanResourcesView();
 		for (int i = 0; i < getNbGardens().getStaff().size(); i ++) {
@@ -66,13 +81,17 @@ public class DatabaseMain {
 					System.out.println("yay");
 					currentUser = getNbGardens().getStaff(i);
 					access = currentUser.getAccessLevel();
-//					ok = true;
+					continue;
 				} 
 			}
 		}
 	showGUI(access);
 	}
 	
+	/**
+	 * display users panel dependant on their accesss level
+	 * @param access
+	 */
 	private static void showGUI(int access) {
 		container.removeAll();
 		frame.getContentPane().setLayout(new BorderLayout());
@@ -98,11 +117,33 @@ public class DatabaseMain {
 		container = frame.getContentPane();
 	}
 
-	@Test
-	public static void testQuery() {
-//		DatabaseMain.dbc.returnFromDatabase(DatabaseMain.dbc.accessDB(), 
-	//			"SELECT * FROM person");
+	/**
+	 * Set gridbag layout standards for all panels
+	 * @param setX position across on current panel
+	 * @param setY position down on current panel
+	 * @param setWidth for larger objects
+	 * @return
+	 */
+	public static GridBagConstraints setLayoutConstraints(
+			int setX, int setY, int setWidth){
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = setX;
+		gbc.gridy = setY;
+		gbc.gridheight = 1;
+		gbc.gridwidth = setWidth;
+		gbc.weightx = 1;
+		gbc.weighty = 0;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.insets = new Insets(3,3,3,3);
+		gbc.anchor = GridBagConstraints.WEST;
+		return gbc;	
 	}
+
+	/**
+	 * TODO what does this do?
+	 * @param table
+	 * @param where
+	 */
 	public static void query(String table, String where) {
 		// if table is person get person
 		// if table is customer return person and customer

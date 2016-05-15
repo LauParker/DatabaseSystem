@@ -13,6 +13,10 @@ import main.DatabaseController;
 import main.DatabaseMain;
 
 public class Frame extends JFrame {
+	
+	/**
+	 * window object to structure program frame
+	 */
 	public Frame() {
 		this.setTitle("Database Management");
 		this.setJMenuBar(createFrameMenu());
@@ -22,6 +26,10 @@ public class Frame extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
+	/**
+	 * window taskbar menu and action listeners for menu buttons 
+	 * @return
+	 */
 	public JMenuBar createFrameMenu() {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu connectionMenu = new JMenu("Connection");

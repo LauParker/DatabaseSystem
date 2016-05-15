@@ -1,5 +1,7 @@
 package object;
 
+import java.util.Date;
+
 public class Employee extends Person
 {
 	private int payeNum;
@@ -12,7 +14,6 @@ public class Employee extends Person
 	private String logon;
 	private String wordpass;
 		
-
 	/**
 	 * @param accountNumber
 	 * @param title
@@ -37,7 +38,7 @@ public class Employee extends Person
 			String lastName, long contactNo, String email, char gender,
 			Date dateOfBirth, Address homeAddress, int payeNum, double salary,
 			long emergancyContactNum, String emergancyContactName,
-			Employee lineManager, int accessLevel, String department,
+			int accessLevel, String department,
 			String logon, String wordpass)
 	{
 		super(accountNumber, title, firstName, lastName, contactNo, email,
@@ -46,7 +47,7 @@ public class Employee extends Person
 		this.salary = salary;
 		this.emergancyContactNum = emergancyContactNum;
 		this.emergancyContactName = emergancyContactName;
-		this.lineManager = lineManager;
+		this.lineManager = null;
 		this.accessLevel = accessLevel;
 		this.department = department;
 		this.logon = logon;

@@ -1,7 +1,6 @@
 package object;
 
-public class Address
-{
+public class Address {
 
 	private String houseNameNum;
 	private String firstLine;

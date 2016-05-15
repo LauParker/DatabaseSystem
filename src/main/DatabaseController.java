@@ -5,15 +5,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Date;
+
+import org.junit.Test;
 
 import object.Address;
 import object.Customer;
 import object.Employee;
 import object.Product;
 import object.State;
-import object.State.state;
+
 
 
 public class DatabaseController {
@@ -28,7 +28,7 @@ public class DatabaseController {
 	 * connect to database and return connection
 	 * @return connection to DB
 	 */
-	public Connection accessDB() {
+	private Connection accessDB() {
 		if (conn != null) {
 			closeConnection(conn);
 		}
@@ -96,7 +96,7 @@ public class DatabaseController {
 						result.getString("county"),
 						result.getString("postcode"), 
 						result.getString("county"));
-				Employee temp = new Employee(
+				Employee tempEmployee = new Employee(
 						result.getInt("Account_No"), 
 						result.getString("Title"), 
 						result.getString("First_Name"),
@@ -108,13 +108,13 @@ public class DatabaseController {
 						tempAddress,
 						result.getInt("Payrole_No"),
 						result.getDouble("Salary_Hour_Rate"),
-						result.getInt("Emergancy_Contact_No"),
-						result.getString("Emergancy_Contact_Name"), null, // this //TODO Employee line manager
+						Long.parseLong(result.getString("Emergancy_Contact_No")),
+						result.getString("Emergancy_Contact_Name"), //TODO Employee line manager
 						result.getInt("Access_Level"),
 						result.getString("Department"),
 						result.getString("logon"),
 						result.getString("password"));
-				DatabaseMain.getNbGardens().addStaff(temp);
+				DatabaseMain.getNbGardens().addStaff(tempEmployee);
 				//return result;
 			}
 		} catch (SQLException SQLExcep)	{
@@ -274,7 +274,7 @@ public class DatabaseController {
 	 * close database connection
 	 * @param con
 	 */
-	public void closeConnection(Connection con) {
+	private void closeConnection(Connection con) {
 		if (con != null) {
 			try	{
 				con.close();
@@ -284,5 +284,14 @@ public class DatabaseController {
 				SQLExcep.printStackTrace();
 			}			
 		}		
+	}
+
+	@Test
+	/**
+	 * get a return from all the tables in the database
+	 */
+	public void testAllReturn() {
+		// TODO Auto-generated method stub
+		
 	}
 }

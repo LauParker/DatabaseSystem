@@ -6,14 +6,18 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import object.Date;
-
+import java.util.Calendar;
+import java.util.Date;
 
 public class PanelEditDate extends JPanel{
 	private JComboBox<String> dayCBox;
 	private JComboBox<String> monthCBox;
 	private JComboBox<String> yearCBox;
 
+	/**
+	 * editable Date panel with blank fields
+	 * @param editable
+	 */
 	public PanelEditDate(boolean editable) {
 		this.setLayout(new GridLayout(2,6,1,1));
 		String days[] = buildDaysList();
@@ -34,6 +38,11 @@ public class PanelEditDate extends JPanel{
 		
 	}
 	
+	/**
+	 * date panel with pre-loaded data
+	 * @param date
+	 * @param editable
+	 */
 	public PanelEditDate(Date date, boolean editable) {
 		this.setLayout(new GridLayout(2,6,1,1));
 		String days[] = buildDaysList();
@@ -48,15 +57,21 @@ public class PanelEditDate extends JPanel{
 		this.add(dayCBox);
 		this.add(monthCBox);
 		this.add(yearCBox);
-		dayCBox.setSelectedIndex(date.getDay() -1);
-		monthCBox.setSelectedIndex(date.getMonth() -1);
-		yearCBox.setSelectedIndex(2014 - date.getYear());
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		dayCBox.setSelectedIndex(cal.DAY_OF_MONTH -1);
+		monthCBox.setSelectedIndex(cal.MONTH);
+		yearCBox.setSelectedIndex(2016 - cal.YEAR);
 		dayCBox.setEnabled(editable);
 		monthCBox.setEnabled(editable);
 		yearCBox.setEnabled(editable);
 	}
 	
-	public static String[] buildDaysList() {
+	/**
+	 * build day list for combo box
+	 * @return
+	 */
+	private static String[] buildDaysList() {
 		
 		String[] daysList = new String[31];
 		for (int i = 0; i < 31; i++)
@@ -64,22 +79,37 @@ public class PanelEditDate extends JPanel{
 		return daysList;
 	}
 
-	public static String[] buildMonthsList() {
+	/**
+	 * build month list for combo box
+	 * @return
+	 */
+	private static String[] buildMonthsList() {
 		String[] monthList = new String[12];
 		for (int i = 0; i < 12; i++)
 			monthList[i] = String.valueOf(i + 1); 
 		return monthList;
 	}
-	public static String[] buildYearsList() {
+	
+	/**
+	 * build year list for combo box
+	 * @return
+	 */
+	private static String[] buildYearsList() {
 		String[] yearList = new String[65];
 		for (int i = 0; i < 65; i++)
 			yearList[i] = String.valueOf(2014 - i); 
 		return yearList;
 	}
 	
+	/**
+	 * 
+	 * @return current date in date panel display
+	 */
 	public Date getDate() {
-		Date date = new Date((dayCBox.getSelectedIndex()+1),
-				(monthCBox.getSelectedIndex()+1),(dayCBox.getSelectedIndex()+1));
-		return date;
+		Calendar cal = Calendar.getInstance();
+		cal.set(yearCBox.getSelectedIndex()+1, 
+				monthCBox.getSelectedIndex()+1, 
+				dayCBox.getSelectedIndex()+1);
+		return cal.getTime();
 	}
 }

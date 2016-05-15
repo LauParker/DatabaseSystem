@@ -1,5 +1,7 @@
 package object;
 
+import java.util.Date;
+
 public class Person
 {
 	private int accountNumber;
@@ -49,7 +51,7 @@ public class Person
 		this.dateOfBirth = other.dateOfBirth;
 		this.homeAddress = other.homeAddress;
 	}
-	
+
 	/**
 	 * @return the accountNumber
 	 */
