@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import main.DatabaseMain;
 
+@SuppressWarnings("serial")
 public class PanelSQL extends JPanel {
 
 	public PanelSQL() {

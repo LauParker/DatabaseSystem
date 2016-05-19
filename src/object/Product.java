@@ -1,7 +1,5 @@
 package object;
 
-import java.util.Currency;
-
 public class Product {
 	
 	private int id;

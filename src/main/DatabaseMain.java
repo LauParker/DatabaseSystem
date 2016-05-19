@@ -8,18 +8,10 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import javax.swing.JLabel;
 
-import object.Customer;
 import object.Employee;
 import object.NBGardens;
-import object.Product;
-
-import org.junit.Test;
 
 public class DatabaseMain {
 	

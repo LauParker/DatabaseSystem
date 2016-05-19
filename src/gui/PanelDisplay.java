@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 public class PanelDisplay extends JPanel {
 
 	private JTextArea sqlArea;

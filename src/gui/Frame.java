@@ -9,9 +9,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import main.DatabaseController;
 import main.DatabaseMain;
 
+@SuppressWarnings("serial")
 public class Frame extends JFrame {
 	
 	/**

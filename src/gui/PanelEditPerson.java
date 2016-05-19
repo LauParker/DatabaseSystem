@@ -7,11 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import main.DatabaseMain;
-import object.Address;
-import object.Date;
-import object.Employee;
 import object.Person;
 
+@SuppressWarnings("serial")
 public class PanelEditPerson extends JPanel{
 	private int accNum;
 	private JTextField titleTF;

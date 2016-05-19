@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import java.util.Calendar;
 import java.util.Date;
 
+@SuppressWarnings("serial")
 public class PanelEditDate extends JPanel{
 	private JComboBox<String> dayCBox;
 	private JComboBox<String> monthCBox;

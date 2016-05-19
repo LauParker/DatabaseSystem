@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import org.junit.Test;
 
 import main.DatabaseMain;
+@SuppressWarnings("serial")
 public class PanelLogon extends JPanel{
 
 	/**

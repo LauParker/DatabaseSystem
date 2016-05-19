@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import main.DatabaseMain;
 import object.Address;
 
+@SuppressWarnings("serial")
 public class PanelEditAddress extends JPanel
 {
 	private JTextField houseTF;
